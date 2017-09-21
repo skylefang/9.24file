@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>元素漂浮问题</title>
+	<script src="js/function.js"></script>
+	<style>
+	.box{
+		width: 200px;
+		height: 200px;
+		background: #C869EE;
+		/* border-radius: 50%; */
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	.son{
+		width: 200px;
+		height: 200px;
+		background: #C0FFDE;
+		border-radius: 50%;
+		position: absolute;
+		left: 200px;
+		top: 50px;
+	}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="son"></div>
+<script>
+	window.onload=function(){
+		let box =$('.box')[0];
+		let obj=new Float(box);
+		obj.move();
+		box.onmouseover=function(){
+			obj.stop();
+		}
+		box.onmouseout=function(){
+			obj.move();
+		}
+		window.onresize=function(){
+			obj.resize();
+		}
+		
+		let son =$('.son')[0];
+		let obj1=new Float(son);
+		obj1.move();
+		son.onmouseover=function(){
+			obj1.stop();
+		}
+		son.onmouseout=function(){
+			obj1.move();
+		}
+		window.onresize=function(){
+			obj1.resize();
+		}
+	}
+</script>
+</body>
+</html>

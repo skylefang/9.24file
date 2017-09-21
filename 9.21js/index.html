@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象漂浮问题</title>
+
+	<style>
+	.box{
+		width: 200px;
+		height: 200px;
+		background: #C869EE;
+		/* border-radius: 50%; */
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<script>
+		window.onload=function(){
+			let box = document.getElementsByClassName('box')[0];			
+			function Float(obj){
+				this.obj = obj;
+				this.maxX = window.innerWidth-this.obj.offsetWidth;
+				this.speed = 15;
+			}
+			/*Float.prototype={
+
+			}*/
+			Float.prototype.stop=function(){
+            	clearInterval(this.t);
+            }
+            Float.prototype.resize=function(){
+            	this.maxX = window.innerWidth-this.obj.offsetWidth;
+            }
+			Float.prototype.move = function(){
+				let that = this;
+				this.t = setInterval(function(){
+					let lefts = that.obj.offsetLeft + that.speed;
+					if(lefts>=that.maxX){
+						lefts=that.maxX;
+						that.speed*=-1;
+					}
+					if(lefts<=0){
+						lefts=0;
+						that.speed*=-1;
+					}
+					that.obj.style.left = lefts + 'px';
+				},60)
+			}
+			let obj=new Float(box);
+			obj.move();
+			box.onmouseover=function(){
+				obj.stop();
+			}
+			box.onmouseout=function(){
+				obj.move();
+			}
+			window.onresize=function(){
+				obj.resize();
+			}
+		}
+	</script>
+</body>
+</html>

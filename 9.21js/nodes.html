@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>节点</title>
+	<script src="js/function.js"></script>
+</head>
+<body>
+    <div class="box">
+        这是一个类名为box的div标签
+    	<span>这是一个span标签</span>
+    </div>
+    <div>div</div>
+    <div class="box1">
+        wenzi
+    	<h1>这是一个h1标签</h1>
+    	<div class="son">
+    		这是box1的子元素名叫son
+    	</div>
+    	<div class="last">吃饭睡觉打豆豆</div>
+    	<span></span>
+    </div>
+    <!-- 在节点中标签叫做元素节点 -->
+<script>
+    let box = document.querySelector('div.box1');
+    // console.log(box);
+    // let divs = document.querySelectorAll('div');
+    /*console.log(divs);
+    divs.forEach((element,index,obj)=>{
+    	console.log(element);
+    	console.log(index);
+    	console.log(obj);
+    })*/
+    // let child = box.childNodes
+    let sap = document.getElementsByTagName('h1')[0];
+    let childs=nextAll(sap,'span');
+    // let firstChild1=lastChild(box);
+    console.log(childs);
+                           
+		
+</script>
+</body>
+</html>
